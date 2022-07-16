@@ -24,13 +24,24 @@ function onTaskFormSubmit(e) {
   setMyTasks([...myTasks, obj])
 }
 
+function handleTextChange(e){
+  setText(e.target.value)
+}
+
+function handleCategoryChange(e){
+  setFormCategory(e.target.value)
+}
+
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES}
       onSelectedCategory={selectedCategory}
       onHandleCategory={setSelectedCategory}/>
-      <NewTaskForm onTaskFormSubmit={onTaskFormSubmit}/>
+      <NewTaskForm 
+       onTextChange={handleTextChange}
+       onCategoryChange={handleCategoryChange}
+      onTaskFormSubmit={onTaskFormSubmit}/>
       <TaskList />
     </div>
   );
