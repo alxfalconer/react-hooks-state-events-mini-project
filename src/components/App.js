@@ -8,6 +8,16 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
+  const [text, setText] = useState("");
+const [formCategory, setFormCategory] = useState("Code")
+
+const [myTasks, setMyTasks] = useState(TASKS)
+const [selectedCategory, setSelectedCategory] = useState("All")
+
+const obj = {
+  text: text,
+  category: formCategory,
+}
   return (
     <div className="App">
       <h2>My tasks</h2>
