@@ -18,11 +18,19 @@ const obj = {
   text: text,
   category: formCategory,
 }
+
+function onTaskFormSubmit(e) {
+  e.preventDefault();
+  setMyTasks([...myTasks, obj])
+}
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
-      <NewTaskForm />
+      <CategoryFilter categories={CATEGORIES}
+      onSelectedCategory={selectedCategory}
+      onHandleCategory={setSelectedCategory}/>
+      <NewTaskForm onTaskFormSubmit={onTaskFormSubmit}/>
       <TaskList />
     </div>
   );
