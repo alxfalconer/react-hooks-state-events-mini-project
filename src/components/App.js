@@ -32,6 +32,12 @@ function handleCategoryChange(e){
   setFormCategory(e.target.value)
 }
 
+function removeTask(taskItem){
+  setMyTasks(myTasks.filter((item)=> item.text !== taskItem));
+}
+
+const filteredTasks = myTasks.filter((task) => selectedCategory === "All" || task.category === selectedCategory);
+
   return (
     <div className="App">
       <h2>My tasks</h2>
@@ -41,8 +47,10 @@ function handleCategoryChange(e){
       <NewTaskForm 
        onTextChange={handleTextChange}
        onCategoryChange={handleCategoryChange}
+       formCategory={formCategory}
+      categories={CATEGORIES.filter((item)=> item !== "All")}
       onTaskFormSubmit={onTaskFormSubmit}/>
-      <TaskList />
+      <TaskList tasks={filteredTasks} onDelete={removeTask} />
     </div>
   );
 }
